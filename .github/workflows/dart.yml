@@ -18,9 +18,12 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      env:
-        GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
-      uses: actions/checkout@v2
+      # env:
+      #   GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
+    - uses: actions/checkout@v4
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }
 
     - name: Print SSH key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
