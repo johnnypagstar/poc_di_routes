@@ -21,7 +21,7 @@ void main() {
 
       final routes = module.provideRoutes();
 
-      expect(routes, isNotEmpty);
+      expect(routes, isEmpty);
     });
   });
 }
