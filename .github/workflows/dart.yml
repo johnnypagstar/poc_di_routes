@@ -11,12 +11,10 @@ on:
       - main
 
 jobs:
-  unit_tests:
-    name: Unit Tests
+  common_steps:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Clone Repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
       
     - uses: webfactory/ssh-agent@v0.9.0
@@ -30,5 +28,18 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
+  unit_tests:
+    name: Unit Tests
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
     - name: Test
       run: flutter test
+
+  analyze:
+    name: Analyze
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
+    - name: Analyze
+      run: flutter analyze
