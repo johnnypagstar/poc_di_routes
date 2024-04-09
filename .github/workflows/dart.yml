@@ -33,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: common_steps
     steps:
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
       - name: Run Tests
         run: flutter test
 
@@ -41,5 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: common_steps
     steps:
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
       - name: Run Analyze
         run: flutter analyze
