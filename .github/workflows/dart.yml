@@ -14,32 +14,32 @@ jobs:
   common_steps:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2
       
-    - uses: webfactory/ssh-agent@v0.9.0
-      with:
-         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-    - run: flutter --version
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+      - run: flutter --version
 
-    - name: Install dependencies
-      run: flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
 
   unit_tests:
     name: Unit Tests
-    needs: common_steps
     runs-on: ubuntu-latest
+    needs: common_steps
     steps:
-    - name: Test
-      run: flutter test
+      - name: Run Tests
+        run: flutter test
 
   analyze:
     name: Analyze
-    needs: common_steps
     runs-on: ubuntu-latest
+    needs: common_steps
     steps:
-    - name: Analyze
-      run: flutter analyze
+      - name: Run Analyze
+        run: flutter analyze
