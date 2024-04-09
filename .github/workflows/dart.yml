@@ -18,8 +18,9 @@ jobs:
     steps:
     - name: Clone Repository
       uses: actions/checkout@v4
-      env:
-        GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
+    - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
     - run: flutter --version
