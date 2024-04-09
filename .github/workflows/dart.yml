@@ -11,39 +11,46 @@ on:
       - main
 
 jobs:
-  common_steps:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-      - run: flutter --version
-
-      - name: Install dependencies
-        run: flutter pub get
-
   unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    needs: common_steps
+
     steps:
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-      - name: Run Tests
-        run: flutter test
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+    - run: flutter --version
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Test
+      run: flutter test
 
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-    needs: common_steps
+
     steps:
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-      - name: Run Analyze
-        run: flutter analyze
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+    - run: flutter --version
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Analyze
+      run: flutter analyze
