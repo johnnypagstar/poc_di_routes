@@ -22,6 +22,9 @@ jobs:
         GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
       uses: actions/checkout@v2
 
+    - name: Print SSH key
+      run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
+
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
 
