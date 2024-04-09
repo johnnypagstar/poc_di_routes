@@ -16,13 +16,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Clone Repository
+      uses: actions/checkout@v4
       env:
         GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
-      uses: actions/checkout@v4
-
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
+    - run: flutter --version
 
     - name: Install dependencies
       run: flutter pub get
