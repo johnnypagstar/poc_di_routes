@@ -7,13 +7,21 @@ class TestModuleMock extends Mock implements Module {}
 
 void main() {
   group('Module | ', () {
-    test('Routes ', () {
+    test('Routes with Success ', () {
       final module = TestModuleMock();
       when(() => module.provideRoutes()).thenReturn([]);
 
       final routes = module.provideRoutes();
 
       expect(routes, isA<List<GoRoute>>());
+    });
+    test('Routes  Empty ', () {
+      final module = TestModuleMock();
+      when(() => module.provideRoutes()).thenReturn([]);
+
+      final routes = module.provideRoutes();
+
+      expect(routes, isNotEmpty);
     });
   });
 }
