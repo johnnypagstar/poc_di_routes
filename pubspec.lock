@@ -160,6 +160,23 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  mocktail:
+    dependency: "direct dev"
+    description:
+      name: mocktail
+      sha256: c4b5007d91ca4f67256e720cb1b6d704e79a510183a12fa551021f652577dce6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
+  pagstar_result:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: "27dd69217587879c19e4f853e099f455e7b7be21"
+      url: "git@github.com:pagstar/pagstar-result.git"
+    source: git
+    version: "1.0.0"
   path:
     dependency: transitive
     description:

@@ -16,8 +16,13 @@ dependencies:
 
   go_router:
   get_it:
+  pagstar_result:
+      git:
+        url: git@github.com:pagstar/pagstar-result.git
+        ref: main
 
 dev_dependencies:
+  mocktail:
   flutter_test:
     sdk: flutter
 
