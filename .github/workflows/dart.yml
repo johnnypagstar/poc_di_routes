@@ -18,12 +18,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      env:
-        GIT_SSH_COMMAND: 'ssh -i ${{ secrets.SSH_PRIVATE_KEY }}'
       uses: actions/checkout@v4
-
-    - name: Print SSH key
-      run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
 
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
